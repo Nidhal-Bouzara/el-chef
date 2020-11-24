@@ -1,0 +1,50 @@
+.heroLayout {
+    display: flex;
+    flex-direction: column;
+}
+
+.heroContent {
+    width: 70%;
+    margin: 15% 15% 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+}
+
+.title {
+    font-family: 'Lovelyn';
+    font-size: 5rem;
+    font-weight: 500;
+    color: #D99E30;
+    margin: 0;
+}
+
+.subTitle {
+    font-family: 'Caveat';
+    font-size: 2rem;
+    font-weight: 400;
+    color: #D4D8FF;
+    margin: -.3rem 0 0;
+}
+
+.description {
+    font-family: 'Work Sans';
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #D4D8FF;
+    margin: 2rem 0;
+    text-align: center ;
+}
+
+.heroImage {
+    width: 100vw;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+}
+
+body {
+    background-color: #1D1F2F;
+    overflow-x: hidden;
+}
