@@ -1,8 +1,3 @@
-.heroLayout {
-    display: flex;
-    flex-direction: column;
-}
-
 .heroContent {
     width: 70%;
     margin: 15% 15% 0;
@@ -12,20 +7,17 @@
     position: absolute;
 }
 
+.heroLogo {
+    width: 4rem;
+    height: auto;
+}
+
 .title {
     font-family: 'Lovelyn';
     font-size: 5rem;
     font-weight: 500;
     color: #D99E30;
     margin: 0;
-}
-
-.subTitle {
-    font-family: 'Caveat';
-    font-size: 2rem;
-    font-weight: 400;
-    color: #D4D8FF;
-    margin: -.3rem 0 0;
 }
 
 .description {
@@ -71,17 +63,6 @@
     position: relative;
 }
 
-.buttonArrow::before {
-    content: '';
-    width: 6rem;
-    height: 1rem;
-    display: block;
-    position: absolute;
-    top: 0;
-    left: -3rem;
-    background-color: red;
-}
-
 .buttonTitle {
     font-family: 'Lovelyn';
     font-size: 2rem;
@@ -91,6 +72,21 @@
     text-align: center;
     position: relative;
     bottom: 1rem;
+    animation: pulse 10s ease infinite;
+}
+
+@keyframes pulse {
+    0% {
+        color: white;
+    }
+
+    50% {
+        color: #bec6ff;
+    }
+
+    100% {
+        color: white;
+    }
 }
 
 body {

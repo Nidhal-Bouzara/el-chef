@@ -3,6 +3,10 @@
   src: local('Lovelyn'), url(./fonts/Lovelyn.ttf) format('truetype');
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -15,4 +19,27 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+/* Accents */
+.mobileDivider {
+  width: 100vw;
+  height: 5px;
+  background-color: #D99E30;
+}
+
+/* text */
+.subTitle {
+  font-family: 'Caveat';
+  font-size: 2rem;
+  font-weight: 400;
+  color: #D4D8FF;
+  margin: -.3rem 0 0;
+}
+
+/* Layouts */
+.sectionLayout {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
 }
