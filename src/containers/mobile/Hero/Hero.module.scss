@@ -1,10 +1,12 @@
 .heroContent {
-    width: 70%;
-    margin: 15% 15% 0;
+    min-width: 70%;
+    width: 340px;
+    min-height: 210px;
+    margin: 6rem 15% 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: absolute;
+    position: relative;
 }
 
 .heroLogo {
@@ -17,7 +19,7 @@
     font-size: 5rem;
     font-weight: 500;
     color: #D99E30;
-    margin: 0;
+    margin: 1rem 0 0;
 }
 
 .description {
@@ -25,17 +27,17 @@
     font-size: 1.2rem;
     font-weight: 400;
     color: #D4D8FF;
-    margin: 2rem 0;
+    margin: 2rem 0 0;
     text-align: center ;
 }
 
 .heroImageContainer {
     width: 100vw;
-    position: absolute;
-    bottom: 0;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 
 .heroImage {

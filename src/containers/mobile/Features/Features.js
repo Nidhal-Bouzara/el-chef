@@ -15,7 +15,7 @@ const Features = () => {
     return (
         <section
             className="sectionLayout"
-            style={{ height: '100vh'}}
+            style={{ minHeight: 'fit-content', marginBottom: '5rem'}}
         >
             <h3
                 className="subTitle"

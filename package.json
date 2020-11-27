@@ -3,10 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.13",
     "@reduxjs/toolkit": "^1.4.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "formik": "^2.2.5",
+    "immer": "^8.0.0",
     "lodash": "^4.17.20",
     "node-sass": "^4.14.1",
     "react": "^17.0.1",
@@ -16,9 +21,9 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "source-map-explorer": "^2.5.0",
-    "web-vitals": "^0.2.4",
     "webfontloader": "^1.6.28",
-    "webpack": "^4.44.2"
+    "webpack": "^4.44.2",
+    "yup": "^0.31.0"
   },
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
@@ -45,5 +50,10 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "<rootDir>/.jest.transform.js"
+    }
+  }
 }

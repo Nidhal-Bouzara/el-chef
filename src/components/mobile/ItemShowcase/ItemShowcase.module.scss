@@ -26,7 +26,7 @@ $gold: #D99E30;
 
 .contentBody {
     font-family: 'Work Sans';
-    font-size: 1rem;
+    font-size: .7rem;
     font-weight: 400;
     color: #D4D8FF;
     margin: 0 0 1rem;
@@ -48,7 +48,6 @@ $gold: #D99E30;
     &::before {
         content: '';
         display: block;
-        // height: 2rem;
         height: 130%;
         width: 1.3rem;
         background-color: #D99E30;
