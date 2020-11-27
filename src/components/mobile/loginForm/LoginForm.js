@@ -12,7 +12,7 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
 const RegistrationForm = ({ authStyling }) => {
-    const regSchema = Yup.object().shape({
+    const loginSchema = Yup.object().shape({
         email: Yup.string()
                 .min(5, 'Email too short')
                 .max(40, 'Email too long')
@@ -24,7 +24,7 @@ const RegistrationForm = ({ authStyling }) => {
                 .required('This field is required')
     })
 
-    const [registrationEmailState, setRegistrationEmailState] = useState({
+    const [loginEmailState, setLoginEmailState] = useState({
         positioning: {
             top: null,
             left: null
@@ -32,7 +32,7 @@ const RegistrationForm = ({ authStyling }) => {
         color: null
     });
 
-    const [registrationPasswordState, setRegistrationPasswordState] = useState({
+    const [loginPasswordState, setLoginPasswordState] = useState({
         positioning: {
             top: null,
             left: null
@@ -40,7 +40,7 @@ const RegistrationForm = ({ authStyling }) => {
         color: null
     });
 
-    const registrationStyling = {
+    const loginStyling = {
         positioning: {
             top: '-0.5rem',
             left: '0'
@@ -57,7 +57,7 @@ const RegistrationForm = ({ authStyling }) => {
                         email: '',
                         password: ''
                     }}
-                    validationSchema={regSchema}
+                    validationSchema={loginSchema}
                     onSubmit={(values, {setSubmitting}) => {
                         alert(JSON.stringify(values, null, 2));
                         setSubmitting(false);
@@ -70,14 +70,14 @@ const RegistrationForm = ({ authStyling }) => {
                                 <FontAwesomeIcon
                                     className={authStyling.inputIcon}
                                     icon={faAt}
-                                    style={{color: registrationEmailState.color}}
+                                    style={{color: loginEmailState.color}}
                                 />
                                 <label
                                     htmlFor="email"
                                     className={authStyling.inputLabel}
                                     style={{
-                                        ...registrationEmailState.positioning,
-                                        color: registrationEmailState.color
+                                        ...loginEmailState.positioning,
+                                        color: loginEmailState.color
                                     }}
                                     >E-Mail</label>
                                 <Field
@@ -85,35 +85,35 @@ const RegistrationForm = ({ authStyling }) => {
                                     type="email"
                                     name="email"
                                     id="email"
-                                    style={{border:'1px solid' + registrationEmailState.color + ' !important'}}
+                                    style={{border:'1px solid' + loginEmailState.color + ' !important'}}
                                     onFocus={() => {
-                                        setRegistrationEmailState(
-                                            produce(registrationEmailState, draft => {
-                                                draft.color = registrationStyling.validatingColor
+                                        setLoginEmailState(
+                                            produce(loginEmailState, draft => {
+                                                draft.color = loginStyling.validatingColor
                                                 draft.positioning = {
-                                                    ...registrationStyling.positioning
+                                                    ...loginStyling.positioning
                                                 }
                                             })
                                         )
                                     }}
                                     onBlur={(e) => {
                                         if (values.email && !errors.email) {
-                                            setRegistrationEmailState(
-                                                produce(registrationEmailState, draft => {
-                                                    draft.color = registrationStyling.validColor
+                                            setLoginEmailState(
+                                                produce(loginEmailState, draft => {
+                                                    draft.color = loginStyling.validColor
                                                 })
                                             )
                                         } else if (values.email && errors.email ) {
-                                            setRegistrationEmailState(
-                                                produce(registrationEmailState, draft => {
-                                                    draft.color = registrationStyling.invalidColor
-                                                    draft.positioning = {...registrationStyling.positioning}
+                                            setLoginEmailState(
+                                                produce(loginEmailState, draft => {
+                                                    draft.color = loginStyling.invalidColor
+                                                    draft.positioning = {...loginStyling.positioning}
                                                 })
                                             )
                                         } else if (errors.email && !values.email) {
-                                            setRegistrationEmailState(
-                                                produce(registrationEmailState, draft => {
-                                                    draft.color = registrationStyling.invalidColor
+                                            setLoginEmailState(
+                                                produce(loginEmailState, draft => {
+                                                    draft.color = loginStyling.invalidColor
                                                     draft.positioning = {
                                                         top: null,
                                                         left: null
@@ -121,8 +121,8 @@ const RegistrationForm = ({ authStyling }) => {
                                                 })
                                             )
                                         } else {
-                                            setRegistrationEmailState(
-                                                produce(registrationEmailState, draft => {
+                                            setLoginEmailState(
+                                                produce(loginEmailState, draft => {
                                                     draft.color = null
                                                     draft.positioning = {
                                                         top: null,
@@ -140,14 +140,14 @@ const RegistrationForm = ({ authStyling }) => {
                                 <FontAwesomeIcon
                                     className={authStyling.inputIcon}
                                     icon={faUnlock}
-                                    style={{color: registrationPasswordState.color}}
+                                    style={{color: loginPasswordState.color}}
                                 />
                                 <label
                                     htmlFor="password"
                                     className={authStyling.inputLabel}
                                     style={{
-                                        ...registrationPasswordState.positioning,
-                                        color: registrationPasswordState.color
+                                        ...loginPasswordState.positioning,
+                                        color: loginPasswordState.color
                                     }}
                                     >Password</label>
                                 <Field
@@ -155,35 +155,35 @@ const RegistrationForm = ({ authStyling }) => {
                                     type="password"
                                     name="password"
                                     id="password"
-                                    style={{border: '1px solid' + registrationPasswordState.color}}
+                                    style={{border: '1px solid' + loginPasswordState.color}}
                                     onFocus={() => {
-                                        setRegistrationPasswordState(
-                                            produce(registrationPasswordState, draft => {
-                                                draft.color = registrationStyling.validatingColor
+                                        setLoginPasswordState(
+                                            produce(loginPasswordState, draft => {
+                                                draft.color = loginStyling.validatingColor
                                                 draft.positioning = {
-                                                    ...registrationStyling.positioning
+                                                    ...loginStyling.positioning
                                                 }
                                             })
                                         )
                                     }}
                                     onBlur={(e) => {
                                         if (values.password && !errors.password) {
-                                            setRegistrationPasswordState(
-                                                produce(registrationPasswordState, draft => {
-                                                    draft.color = registrationStyling.validColor
+                                            setLoginPasswordState(
+                                                produce(loginPasswordState, draft => {
+                                                    draft.color = loginStyling.validColor
                                                 })
                                             )
                                         } else if (values.password && errors.password ) {
-                                            setRegistrationPasswordState(
-                                                produce(registrationPasswordState, draft => {
-                                                    draft.color = registrationStyling.invalidColor
-                                                    draft.positioning = {...registrationStyling.positioning}
+                                            setLoginPasswordState(
+                                                produce(loginPasswordState, draft => {
+                                                    draft.color = loginStyling.invalidColor
+                                                    draft.positioning = {...loginStyling.positioning}
                                                 })
                                             )
                                         } else if (errors.password && !values.password) {
-                                            setRegistrationPasswordState(
-                                                produce(registrationPasswordState, draft => {
-                                                    draft.color = registrationStyling.invalidColor
+                                            setLoginPasswordState(
+                                                produce(loginPasswordState, draft => {
+                                                    draft.color = loginStyling.invalidColor
                                                     draft.positioning = {
                                                         top: null,
                                                         left: null
@@ -191,8 +191,8 @@ const RegistrationForm = ({ authStyling }) => {
                                                 })
                                             )
                                         } else {
-                                            setRegistrationPasswordState(
-                                                produce(registrationPasswordState, draft => {
+                                            setLoginPasswordState(
+                                                produce(loginPasswordState, draft => {
                                                     draft.color = null
                                                     draft.positioning = {
                                                         top: null,
@@ -211,7 +211,7 @@ const RegistrationForm = ({ authStyling }) => {
                                     disabled={isSubmitting}
                                     className={authStyling.inputButton}
                                 >
-                                    Register
+                                    Log In
                                 </button>
                             </div>
                         </Form>
