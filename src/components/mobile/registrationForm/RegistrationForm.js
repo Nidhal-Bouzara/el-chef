@@ -85,7 +85,7 @@ const RegistrationForm = ({ authStyling }) => {
                                     type="email"
                                     name="email"
                                     id="email"
-                                    style={{border:'1px solid' + registrationEmailState.color + ' !important'}}
+                                    style={{border:'1px solid' + registrationEmailState.color}}
                                     onFocus={() => {
                                         setRegistrationEmailState(
                                             produce(registrationEmailState, draft => {
