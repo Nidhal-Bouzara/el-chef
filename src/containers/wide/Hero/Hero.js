@@ -8,6 +8,15 @@ import heroStyling from './Hero.module.scss';
 import wideChef from '../../../images/wideChef-min.png';
 import crown from '../../../images/crown-min.png';
 
+// Fonts
+
+ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+ import { 
+     faInstagramSquare,
+     faFacebookSquare,
+     faTwitterSquare
+  } from '@fortawesome/free-brands-svg-icons';
+
 const Hero = () => {
     return (
         <section className={heroStyling.container}>
@@ -26,7 +35,18 @@ const Hero = () => {
                 <div className={heroStyling.mascotContainer}>
                     <img src={wideChef} className={heroStyling.mascot} alt="Mascot of El Chef" />
                     <div className={heroStyling.socialContainer}>
-                        hello
+                        <div className={heroStyling.socialTitle}>Find us on</div>
+                        <div className={heroStyling.socialIconsContainer}>
+                            <a href="https://www.instagram.com">
+                                <FontAwesomeIcon icon={faInstagramSquare} />
+                            </a>
+                            <a href="https://www.facebook.com">
+                                <FontAwesomeIcon icon={faFacebookSquare} />
+                            </a>
+                            <a href="https://www.twitter.com">
+                                <FontAwesomeIcon icon={faTwitterSquare} />
+                            </a>
+                        </div>
                     </div>
                 </div>
 

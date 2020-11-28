@@ -54,15 +54,12 @@
     font-size: 2.5rem;
     margin: 0 3rem;
     cursor: pointer;
+    transition: all .3s ease;
+    &:hover {
+        color: white;
+    }
 }
 
-.authButton {
-    color: #D99E30;
-}
-
-.authButtonDecoration {
-    height: 2rem;
-}
 
 .authButtonContainer {
     display: flex;
@@ -73,6 +70,14 @@
     bottom: 1rem;
 }
 
+.authButtonDecoration {
+    height: 2rem;
+}
+
+.authButton {
+    color: #D99E30;
+}
+
 .contentButton {
     color: #D4D8FF;
 }
@@ -81,7 +86,7 @@
 .right {
     width: 50vw;
     position: absolute;
-    right: 0;
+    right: -17px;
     height: 100%;
 }
 
@@ -94,14 +99,14 @@
     position: absolute;
     right: 0;
     bottom: 0;
-    width: 150%;
+    width: 100%;
     height: 100%;
 }
 
 .mascot {
     position: absolute;
-    bottom: -15.5%;
-    right: -21%;
+    bottom: 0;
+    right: 0;
     width: 100%;
 }
 
@@ -139,12 +144,26 @@
 .socialContainer {
     position: absolute;
     bottom: 0;
-    right: 52.5%;
-    height: 35%;
+    right: 75%;
+    height: 32.5%;
+    padding-right: 4rem;
+    display: flex;
+    width: fit-content;
+    // flex-direction: column;
+    // justify-content: space-around;
+    // align-items: center;
+
+}
+
+.socialIconsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
     &::before {
         content: '';
         display: block;
-        width: 1.5rem;
+        width: 1.2rem;
         height: 101%;
         background-color: white;
         position: absolute;
@@ -152,4 +171,28 @@
         border-radius: 20px 0 0 0;
         right: 0;
     }
+
+    & > * {
+        font-size: 3.5rem;
+        color: white;
+        cursor: pointer;
+        transition: all .2s ease;
+        &:hover {
+            color: #76C8FF;
+        }
+    }
+}
+
+.socialTitle {
+    align-self: center;
+    font-family: 'Caveat';
+    font-size: 3.5rem;
+    transform: rotateZ(-90deg);
+    white-space: nowrap;
+    height: fit-content;
+    position: relative;
+    bottom: -3rem;
+    right: -2rem;
+    font-weight: 300;
+    color: white;
 }
