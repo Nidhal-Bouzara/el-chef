@@ -8,6 +8,7 @@ import { isMobile, hasEnoughHeight } from './redux/responsiveness/responsive';
 
 // Containers
 import MobileLandingPage from './pages/mobileLandingPage/MobileLandingPage';
+import DesktopLandingPage from './pages/desktopLandingPage/DesktopLandingPage';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -30,8 +31,7 @@ const App = () => {
       <Switch>
         {
           screenIsMobile ?
-        <Route path="/" exact component={MobileLandingPage} /> : 
-          <Route path="/" render={() => <div>fallback, you are not in mobile</div>} />
+          <Route path="/" exact component={MobileLandingPage} /> : <Route path="/" component={DesktopLandingPage} />
         }
       </Switch>
     </BrowserRouter>

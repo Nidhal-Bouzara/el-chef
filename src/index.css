@@ -24,8 +24,10 @@ code {
 /* Accents */
 .mobileDivider {
   width: 100vw;
-  height: 5px;
+  height: 6px;
   background-color: #D99E30;
+  position: relative;
+  z-index: 100-;
 }
 
 /* text */

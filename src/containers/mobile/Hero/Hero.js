@@ -1,22 +1,19 @@
 import React, { useRef } from 'react';
 
+// Components
+import CTA from '../../../components/callToAttention/CTA';
+
 // Images
 import chefMascot from '../../../images/chef-min.png';
-import chefHat from '../../../images/chefHat-min.png';
 
 // Styles
 import heroStyle from './Hero.module.scss';
 
-const Hero = ({ scrollHeight }) => {
+const Hero = () => {
     const imageRef = useRef(null);
         return (
             <section className="sectionLayout" >
-                <div className={heroStyle.heroContent}>
-                    <img src={chefHat} className={heroStyle.heroLogo} alt="El Chef logo" />
-                    <h1 className={heroStyle.title}>El Chef</h1>
-                    <h2 className="subTitle">A dish for every kitchen</h2>
-                    <p className={heroStyle.description}>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled.</p>
-                </div>
+                <CTA CTAStyling={heroStyle} />
                 <div
                     className={heroStyle.heroImageContainer}
                     ref={imageRef}
