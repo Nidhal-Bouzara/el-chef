@@ -1,0 +1,37 @@
+.featureContainer {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 24vw;
+}
+
+.imageContainer {
+    width: 24vw;
+    height: 15vw;
+    overflow: hidden;
+    border-radius: 30px;
+}
+
+.image {
+    width: inherit;
+    height: inherit;
+}
+
+.title {
+    font-family: 'Caveat';
+    color: #D4D8FF;
+    font-weight: 400;
+    margin-left: 3vw;
+    font-size: 1.8vw;
+    align-items: flex-start;
+    margin: 2vw 0 1vw 3vw ;
+}
+
+.description {
+    color: #D4D8FF;
+    font-family: 'Work Sans';
+    font-size: 0.8vw;
+    margin-left: 3vw;
+    margin-top: 0;
+    width: 75%;
+}
