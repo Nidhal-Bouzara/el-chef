@@ -3,7 +3,20 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    position: relative;
+    overflow: hidden;
     }
+
+.spoonWatermark {
+    position: absolute;
+    transform: rotateZ(135deg);
+    width: 43vw;
+    height: auto;
+    top: -08vw;
+    left: -13vw;
+    opacity: .1;
+    z-index: -1;
+}
 
 // Left Section
 
@@ -20,7 +33,7 @@
     min-width: 70%;
     width: 440px;
     min-height: 210px;
-    margin: 6rem 15% 0;
+    margin: 2vh 15% 1vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,31 +41,45 @@
 }
 
 .heroLogo {
-    width: 4rem;
+    width: 4vw;
     height: auto;
 }
 
 .title {
     font-family: 'Lovelyn';
-    font-size: 7rem;
+    font-size: 7vw;
     font-weight: 500;
     color: #D99E30;
     margin: 1rem 0 0;
+    white-space: nowrap;
+}
+
+.description {
+    font-family: 'Work Sans';
+    font-size: 1.2vw;
+    opacity: .8;
+    font-weight: 300;
+    width: 20vw;
+    min-width: 250px;
+    color: #D4D8FF;
+    margin: 2rem 0 0;
+    text-align: center ;
 }
 
 .buttonsContainer {
     display: flex;
     width: 100%;
-    justify-content: space-around;
-    margin-top: 10rem;
+    justify-content: center;
+    margin-top: 10vh;
 }
 
 .authButton, .contentButton {
     background-color: transparent;
     font-family: 'Lovelyn';
     border: none;
-    font-size: 2.5rem;
-    margin: 0 3rem;
+    font-size: 2.5vw;
+    margin: 0 1vw;
+    white-space: nowrap;
     cursor: pointer;
     transition: all .3s ease;
     &:hover {
@@ -67,26 +94,45 @@
     align-items: center;
     justify-content: flex-end;
     position: relative;
-    bottom: 1rem;
+    bottom: 0;
 }
 
 .authButtonDecoration {
-    height: 2rem;
+    height: 2vw;
+    position: absolute;
+    bottom: 3vw;
 }
 
 .authButton {
     color: #D99E30;
+    &:hover {
+        &::after {
+            color: white;
+        }
+    }
+    &::after {
+        content: 'For free';
+        display: block;
+        position: absolute;
+        font-family: 'Caveat';
+        font-size: 1.5vw;
+        color: #D4D8FF;
+        bottom: -1.5vw;
+        right: 3vw;
+        opacity: .6;
+    }
 }
 
 .contentButton {
     color: #D4D8FF;
 }
-// Right Section
 
+// Right Section
 .right {
     width: 50vw;
     position: absolute;
-    right: -17px;
+    right: 0;
+    bottom: 0;
     height: 100%;
 }
 
@@ -110,15 +156,6 @@
     width: 100%;
 }
 
-.description {
-    font-family: 'Work Sans';
-    font-size: 1.2rem;
-    font-weight: 400;
-    color: #D4D8FF;
-    margin: 2rem 0 0;
-    text-align: center ;
-}
-
 .decoration {
     width: 8%;
     min-width: 12rem;
@@ -130,29 +167,14 @@
     transform: rotateZ(45deg);
 }
 
-.decorationTriangle {
-    width: 0;
-    height: 0;
-    border-top: 475px solid transparent;
-    border-left: 475px solid transparent;
-    border-right: 475px solid #1D1F2F;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-}
-
 .socialContainer {
     position: absolute;
     bottom: 0;
     right: 75%;
-    height: 32.5%;
-    padding-right: 4rem;
+    height: 16.5vw;
+    padding-right: 3vw;
     display: flex;
     width: fit-content;
-    // flex-direction: column;
-    // justify-content: space-around;
-    // align-items: center;
-
 }
 
 .socialIconsContainer {
@@ -163,7 +185,7 @@
     &::before {
         content: '';
         display: block;
-        width: 1.2rem;
+        width: 1vw;
         height: 101%;
         background-color: white;
         position: absolute;
@@ -173,7 +195,7 @@
     }
 
     & > * {
-        font-size: 3.5rem;
+        font-size: 3vw;
         color: white;
         cursor: pointer;
         transition: all .2s ease;
@@ -186,13 +208,12 @@
 .socialTitle {
     align-self: center;
     font-family: 'Caveat';
-    font-size: 3.5rem;
+    font-size: 3vw;
     transform: rotateZ(-90deg);
     white-space: nowrap;
     height: fit-content;
     position: relative;
-    bottom: -3rem;
-    right: -2rem;
+    right: -2vw;
     font-weight: 300;
     color: white;
 }

@@ -7,9 +7,9 @@ import heroStyling from './Hero.module.scss';
 // Images
 import wideChef from '../../../images/wideChef-min.png';
 import crown from '../../../images/crown-min.png';
+import spoonWatermark from '../../../images/spoonWatermark-min.png';
 
 // Fonts
-
  import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
  import { 
      faInstagramSquare,
@@ -20,6 +20,7 @@ import crown from '../../../images/crown-min.png';
 const Hero = () => {
     return (
         <section className={heroStyling.container}>
+            <img src={spoonWatermark} className={heroStyling.spoonWatermark} alt="" />
             <div className={heroStyling.left}>
                 <CTA CTAStyling={heroStyling} />
                 <div className={heroStyling.buttonsContainer}>
