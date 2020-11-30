@@ -19,7 +19,7 @@ const Features = () => {
         >
             <h3
                 className="subTitle"
-                style={{ margin: '5rem 0 2rem' }}
+                style={{ margin: '5rem 0 2rem', fontSize: '2rem' }}
             >Find the perfect dish for you</h3>
             <ItemShowcase 
                 title={"Ingredients"}

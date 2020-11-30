@@ -1,0 +1,50 @@
+.descriptionContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 30%;
+}
+
+.descriptionHeadline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.descriptionTitle {
+    font-family: 'Lovelyn';
+    font-size: 1.5vw;
+    color: #D99E30;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.descriptionSubtitle {
+    font-family: 'Caveat';
+    font-size: 1.4vw;
+    color: #D4D8FF;
+    position: absolute;
+    right: 1vw;
+    bottom: -1.5vw;
+    font-weight: 400;
+}
+
+.imageContainer {
+    border-radius: 30px;
+    overflow: hidden;
+    width: 24vw;
+    height: 15vw;
+    & > img {
+        width: inherit;
+        height: inherit;
+    }
+}
+
+.description {
+    font-family: 'Work Sans';
+    font-size: 1vw;
+    color: #D4D8FF;
+    font-weight: 400;
+}
+

@@ -1,0 +1,71 @@
+.topDecoration {
+    position: absolute;
+    right: 0;
+    top: 1vw;
+    width: .4vw;
+    min-width: 2px;
+    height: 100%;
+    background-color: #D4D8FF;
+  }
+  
+  .topDecoration::before {
+    content: '';
+    display: block;
+    width: 55vw;
+    height: .4vw;
+    min-height: 2px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #D4D8FF;
+  }
+  
+  .subTitle {
+    font-family: 'Caveat';
+    font-size: 2vw;
+    font-weight: 400;
+    color: #D4D8FF;
+    margin: -.3rem 0 0 2vw;
+  }
+  
+  .bottomDecoration {
+    position: absolute;
+    left: 0;
+    bottom: -1vw;
+    height: 100%;
+    width: .4vw;
+    min-width: 2px;
+    background-color: #D4D8FF;
+  }
+  
+  .bottomDecoration::before {
+    content: '';
+    display: block;
+    width: 55vw;
+    height: .4vw;
+    min-height: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #D4D8FF;
+  }
+  
+  .featuresContainer {
+    margin: 4vw 1.5vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .container {
+    width: 100vw;    
+    position: relative;   
+    display: flex;
+    justify-content: center;
+    padding: 7vw 0 7vw;
+  }
+  
+  .content {
+    width: 80%;
+    position: relative;
+  }
