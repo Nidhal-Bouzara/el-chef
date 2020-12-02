@@ -25,7 +25,7 @@ const store = configureStore({
 WebFont.load(
   {
     google: {
-      families: ['Work Sans', 'Caveat'],
+      families: ['Work Sans', 'Caveat', 'Barlow'],
     }
   }
 )
