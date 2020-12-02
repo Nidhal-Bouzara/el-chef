@@ -1,5 +1,5 @@
 .title {
-    font-size: 2rem;
+    font-size: 1.5vw;
     font-family: 'Barlow';
     font-weight: 400;
     margin: 0;
@@ -8,12 +8,12 @@
 
 .content {
     width: 100%;
-    margin: 1rem 0 0 2rem;
+    margin: 1vw 0 0 2vw;
 }
 
 .item {
     display: flex;
-    margin: 3rem 0;
+    margin: 3vw 0;
     width: 67vw;
     height: 17vw;
     background-color: white;
@@ -34,16 +34,17 @@
 .ratingTitle {
     font-size: 'Work Sans';
     opacity: .2;
+    font-size: .7vw;
 }
 
 .descriptionContainer {
     width: 62%;
     max-width: 500px;
-    margin-top: 1rem;
+    margin-top: 1vw;
 }
 
 .description {
-    font-size: 1.1rem;
+    font-size: 0.7vw;
     font-family: 'Work Sans';
     color: #6B6B6B;
     margin: 0;
@@ -51,11 +52,10 @@
 
 .buttons {
     display: flex;
-    justify-content: space-between;
-    width: 52%;
-    max-width: 400px;
+    // width: 52%;
+    // max-width: 400px;
     position: absolute;
-    bottom: 1.5rem;
+    bottom: 1.5vw;
 }
 
 .addButton {
@@ -63,14 +63,15 @@
     border: 2px solid #76FF88;
     border-radius: 4px;
     color: #76FF88;
-    font-size: 1.4rem;
+    font-size: .8vw;
     font-family: 'Work Sans';
     font-weight: 400;
     display: flex;
     align-items: center;
-    padding: .2rem 1rem;
+    padding: .4rem 1.5rem;
     cursor: pointer;
     transition: all .3s ease;
+    margin-right: 2vw;
     &:hover {
         background-color: #76FF88;
         color: white;
@@ -78,7 +79,7 @@
 }
 
 .buttonImage {
-    height: 1.2rem;
+    height: 1vw;
     margin-right: .4rem;
 }
 
@@ -87,10 +88,10 @@
     border: 2px solid #FF7676;
     border-radius: 4px;
     color: #FF7676;
-    font-size: 1.4rem;
+    font-size: .8vw;
     font-family: 'Work Sans';
     font-weight: 400;
-    padding: .2rem 1rem;
+    padding: .4rem 1.5rem;
     cursor: pointer;
     transition: all .3s ease;
     &:hover {
@@ -101,21 +102,29 @@
 
 .widget {
     height: 100%;
-    width: 280px;
+    width: 21%;
     position: absolute;
     right: 0;
     background-color: #EFEFEF;
     border-radius: 0 10px 10px 0;
+    transition: all .4s ease;
 }
 
+
+// .widgetContainer {
+//     margin: .4vw 1.5vw 0;
+// }
+
 .widgetContainer {
-    margin: 2rem 1.5rem;
+    margin: 1.4vw 1.5vw 0;
 }
 
 .widgetTitle {
     font-family: 'Barlow';
     font-weight: 300;
     text-transform: uppercase;
+    font-size: 1.1vw;
+    margin: 0;
 }
 
 .widgetItems {
@@ -131,10 +140,12 @@
     color: #6B6B6B;
     font-weight: 300;
     font-family: 'Work Sans';
+    font-size: .8vw;
 }
 
 .widgetItemValue {
     position: absolute;
-    left: 7rem;
+    left: 7vw;
     font-family: 'Work Sans';
+    font-size: .8vw;
 }

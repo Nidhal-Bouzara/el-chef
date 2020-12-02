@@ -4,7 +4,7 @@ import debounce from 'lodash/debounce';
 
 // Redux
 import { useDispatch, useSelector } from 'react-redux';
-import { isMobile, hasEnoughHeight } from './redux/responsiveness/responsive';
+import { isMobile, hasEnoughHeight, hasEnoughWidth } from './redux/responsiveness/responsive';
 
 // Containers
 import MobileLandingPage from './pages/mobileLandingPage/MobileLandingPage';
@@ -18,11 +18,13 @@ const App = () => {
   useEffect(() => {
     dispatch( isMobile( window.innerWidth <= 550 ))
     dispatch( hasEnoughHeight( window.innerHeight >= 960 ))
+    dispatch( hasEnoughWidth( window.innerWidth >= 1480 ))
   }, [dispatch]);
-
+  
   const onWindowResize = () => {
     dispatch( isMobile( window.innerWidth <= 550 ))
     dispatch( hasEnoughHeight( window.innerHeight >= 960 ))
+    dispatch( hasEnoughWidth( window.innerWidth >= 1480 ))
   }
 
   window.onresize = debounce( onWindowResize, 200 );
