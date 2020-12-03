@@ -1,22 +1,19 @@
 import React from 'react';
 
-// Components
-import RecipeDisplay from '../../components/wide/recipeDiplay/RecipeDisplay';
+// Containers
+import DashboardDisplay from '../../containers/dashboardDisplay/DashboardDisplay';
+import DashboardSidebar from '../../containers/dashboardSidebar/DashboardSidebar';
 
 const DesktopDashboard = () => {
     return (
         <div
             style={{
-                width: '100vw',
                 display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center'
+                paddingLeft: 'clamp(200px, 20vw, 400px)'
             }}
         >
-            <RecipeDisplay />
-            <RecipeDisplay />
-            <RecipeDisplay />
+            <DashboardSidebar />
+            <DashboardDisplay />
         </div>
     );
 }

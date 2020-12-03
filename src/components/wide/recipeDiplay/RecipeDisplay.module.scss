@@ -1,3 +1,17 @@
+.item {
+    display: flex;
+    margin: 1.4vw 0;
+    width: 67vw;
+    height: 17vw;
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+    & > img {
+        height: 100%;
+        width: auto;
+    }
+}
+
 .title {
     font-size: 1.5vw;
     font-family: 'Barlow';
@@ -11,20 +25,6 @@
     margin: 1vw 0 0 2vw;
 }
 
-.item {
-    display: flex;
-    margin: 3vw 0;
-    width: 67vw;
-    height: 17vw;
-    background-color: white;
-    // border-radius: 10px 0 0 10px;
-    border-radius: 10px;
-    position: relative;
-    & > img {
-        height: 100%;
-        width: auto;
-    }
-}
 
 .ratingContainer {
     display: flex;
@@ -48,6 +48,7 @@
     font-family: 'Work Sans';
     color: #6B6B6B;
     margin: 0;
+    overflow: hidden;
 }
 
 .buttons {
@@ -109,11 +110,6 @@
     border-radius: 0 10px 10px 0;
     transition: all .4s ease;
 }
-
-
-// .widgetContainer {
-//     margin: .4vw 1.5vw 0;
-// }
 
 .widgetContainer {
     margin: 1.4vw 1.5vw 0;

@@ -11,7 +11,6 @@ import { useSelector } from 'react-redux';
 
 const RecipeDisplay = () => {
     let screenHasEnoughWidth = useSelector(state => state.responsive.hasEnoughWidth);
-    console.log(screenHasEnoughWidth);
     return (
             <div
                 className={rdStyle.item}

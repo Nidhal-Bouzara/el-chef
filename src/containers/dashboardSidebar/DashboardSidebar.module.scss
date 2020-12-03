@@ -1,0 +1,126 @@
+.sidebarContainer {
+    max-width: 400px;
+    width: clamp(200px, 20vw, 400px);
+    height: 100vh;
+    background-color: #F1F1D4;
+    position: fixed;
+    left: 0;
+    border-right: 3px solid #D99E30;
+    z-index: 0;
+    &::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -3;
+        background-image: url(../../images/sidebarBG.jpg);
+        opacity: .2;
+    }
+}
+
+.head {
+    margin: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.logo {
+    height: 1.8vw;
+    width: auto;
+    margin-right: 1rem;
+}
+
+.title {
+    font-family: 'Lovelyn';
+    font-size: 1.6vw;
+    color: #D99E30;
+}
+
+.sidebarButtonContainer {
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 0;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    &:hover > .sidebarButton {
+        background-color: #ffd900;
+        &::before {
+            background-color: #ffd900;
+        }
+    }
+}
+
+.sidebarButton {
+    width: 2.5rem;
+    height: 4px;
+    background-color: #D99E30;
+    transform: rotateZ(45deg);
+    border-radius: 10px;
+    transition: all .4s ease;
+    &::before {
+        content: '';
+        position: relative;
+        display: block;
+        width: 2.5rem;
+        height: 4px;
+        background-color: #D99E30;
+        transform: rotateZ(-90deg);
+        border-radius: 10px;
+        transition: all .4s ease;
+    }
+}
+
+.divider {
+    width: 100%;
+    position: relative;
+    height: 3px;
+    background-color: #D99E30;
+}
+
+.list {
+    list-style: none;
+    padding: 3vw 2vw;
+    & > li {
+        margin: 1vw 0;
+    }
+    & > li:nth-last-child(1) {
+        margin-top: 3vw;
+    }
+}
+
+.linkIcon {
+    width: 2vw;
+}
+
+.linkIconContact {
+    width: 1.5vw ;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    position: relative;
+    transition: all .4s ease;
+    &:hover > .linkText {
+        color: #16576F;
+        text-decoration: underline;
+    }
+}
+
+.linkText {
+    font-family: 'Caveat';
+    font-size: 1.3vw;
+    color: #383B3E;
+    position: absolute;
+    left: 2.5vw;
+}
