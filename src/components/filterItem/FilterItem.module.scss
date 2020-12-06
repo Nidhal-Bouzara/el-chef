@@ -1,0 +1,84 @@
+.spreadButton {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 10px;
+    padding: .1vw .7vw;
+    font-family: 'Work Sans';
+    font-size: .8vw;
+    cursor: pointer;
+}
+
+.spreadSelected {
+    border: 2px solid rgba($color: #05b31c, $alpha: .6);
+    background-color: rgba($color: #05b31c, $alpha: .05);
+    color: #05b31c;
+}
+
+.spreadNeutral {
+    border: 2px solid rgba($color: #D1AD65, $alpha: .6);
+    background-color: rgba($color: #d1ad65, $alpha: .05);
+    color: #D1AD65;
+}
+
+.spreadRemoved {
+    border: 2px solid rgba($color: #F54F4F, $alpha: .6);
+    background-color: rgba($color: #F54F4F, $alpha: .05);
+    color: #F54F4F;
+}
+
+.spreadSelectedCheckmark {
+    width: 1.2rem;
+    height: 3px;
+    background-color: #05b31c;
+    transform: rotateZ(-45deg);
+    position: relative;
+    border-radius: 10px;
+    margin-right: .3rem;
+    transition: all .2s ease;
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        width: .65rem;
+        height: 3px;
+        background-color: #05b31c;
+        transform: rotateZ(90deg);
+        left: -.3rem;
+        top: -.25rem;
+        border-radius: 10px;
+    }
+}
+
+.spreadPlus {
+    width: 1.2rem;
+    height: 3px;
+    border-radius: 10px;
+    display: flex;
+    margin-right: .3rem;
+    justify-content: center;
+    align-items: center;
+    transition: all .2s ease;
+    &::before {
+        content: '';
+        display: block;
+        height: 1.2rem;
+        width: 3px;
+        border-radius: 10px;
+        position: relative;
+    }
+}
+
+.spreadPlusNeutral {
+    background-color: #D1AD65;
+    &::before {
+        background-color: #D1AD65;
+    }
+}
+
+.spreadPlusRemoved {
+    background-color: #F54F4F;
+    transform: rotateZ(45deg);
+    &::before {
+        background-color: #F54F4F;
+    }
+}

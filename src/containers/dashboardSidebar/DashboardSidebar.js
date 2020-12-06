@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useRouteMatch } from 'react-router-dom';
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 // Styling
 import sidebarStyle from './DashboardSidebar.module.scss';
@@ -10,22 +10,45 @@ import sidebarDiscover from '../../images/sidebarDiscover.svg';
 import sidebarSaved from '../../images/sidebarSaved.svg';
 import sidebarContact from '../../images/sidebarContact.svg';
 
+// Components
+import FilterItem from '../../components/filterItem/FilterItem';
+
 const DashboardSidebar = () => {
-    const [CurrentLink, setCurrentLink] = useState(true);
-    console.log(CurrentLink);
-    const route = useRouteMatch();
-    useEffect(() => {
-        let currentLink = route.path.split('/')[0];
-        console.log(currentLink, route);
-        setCurrentLink(currentLink)
-        return () => {
-            setCurrentLink(null);
-        };
-    }, [route.path, route]);
-    const handleLinkClick = (e) => {
-        console.log(e.target.dataset.linkto);
-        setCurrentLink(e.target);
-    }
+    const path = useLocation().pathname;
+    const discoverSpread = (
+        <div className={sidebarStyle.spreadContainer}>
+            <div className={sidebarStyle.spreadSearch}>
+                <label className={sidebarStyle.spreadLabel}>Ingredients:</label>
+                <div className={sidebarStyle.spreadInputContainer}>
+                    <input type="text" className={sidebarStyle.spreadInput} name="ingredients" id="ingredients"/>
+                    <div className={sidebarStyle.spreadDecoration}></div>
+                </div>
+            </div>
+            <div className={sidebarStyle.spreadList}>
+                <FilterItem
+                    title="Meat"
+                    initCyclePosition={1}
+                />
+                <FilterItem
+                    title="Dirt"
+                    initCyclePosition={2}
+                />
+                <FilterItem
+                    title="Chicken"
+                    initCyclePosition={0}
+                />
+                <FilterItem
+                    title="Dirt"
+                    initCyclePosition={1}
+                />
+                <FilterItem
+                    title="Gravel"
+                    initCyclePosition={2}
+                />
+                
+            </div>
+        </div>
+    );
     return (
         <div className={sidebarStyle.sidebarContainer}>
             <div className={sidebarStyle.head}>
@@ -36,14 +59,15 @@ const DashboardSidebar = () => {
             <ul className={sidebarStyle.list}>
                 <li>
                     <Link 
-                        to='/discover' 
-                        data-linkto="/discover" 
+                        to='/discover'
                         className={sidebarStyle.link}
-                        onClick={handleLinkClick}
                     >
                         <img src={sidebarDiscover} className={sidebarStyle.linkIcon} alt="discover new dishes." />
                         <span className={sidebarStyle.linkText}>Discover New Recipes</span>
                     </Link>
+                    {
+                        path === '/discover'? discoverSpread : null
+                    }
                 </li>
                 <li>
                     <Link to='/' className={sidebarStyle.link}>
