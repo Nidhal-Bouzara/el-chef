@@ -1,0 +1,101 @@
+// Start
+.spreadContainer {
+    margin-top: 1rem;
+}
+
+.spreadSearch {
+    display: flex;
+    align-items: center;
+}
+
+.spreadLabel {
+    font-family: 'Work Sans';
+    color: #383B3E;
+    opacity: .6;
+    font-weight: 300;
+    font-size: 1vw;
+    margin-right: .5rem;
+}
+
+.spreadFormContainer {
+    position: relative;
+}
+
+.spreadInputContainer {
+    position: relative;
+}
+
+.spreadInputContainer {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 9vw;
+}
+
+.spreadInput {
+    border: none;
+    background-color: white;
+    font-size: .8vw;
+    font-family: 'Work Sans';
+    border-radius: 5px;
+    padding: .2rem .2rem .2rem 2rem;
+    width: 100%;
+}
+
+
+.spreadDecoration {
+    position: absolute;
+    left: .4vw;
+    width: .5vw;
+    height: .5vw;
+    border-radius: 50%;
+    border: 2px solid black;
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        width: .5rem;
+        height: 2px;
+        background-color: black;
+        right: -.25rem;
+        bottom: -.2rem;
+        transform: rotateZ(45deg);
+    }
+}
+
+// Suggestions start
+.suggestions {
+    list-style: none;
+    position: absolute;
+    z-index: 100;
+    padding: 0;
+    border: 1px solid rgba($color: #000000, $alpha: .3);
+    border-top: none;
+    padding: .5rem 0 .2rem;
+    background-color: white;
+    width: 99%;
+    transform: translateY(-3px);
+    & > li {
+        padding: .2rem .5rem;
+        border-top: 1px solid rgba($color: #000000, $alpha: .3);
+        text-transform: capitalize;
+        font-family: 'Work Sans';
+        cursor: default;
+        &:hover {
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+            background-color: #383B3E30;
+        }
+    }
+}
+
+// Suggestions end
+
+.spreadList {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1vw 0;
+    & > button {
+        margin: .3vw .2vw;
+    }
+}

@@ -20,8 +20,8 @@ const FilterItem = ({title, initCyclePosition}) => {
     }
     const cycleStates = ['neutral', 'selected', 'removed'];
     const [Cycle, setCycle] = useState({
-        currentCyclePosition: cycleStates[initCyclePosition],
-        appliedStyle: {...cycleMap[cycleStates[initCyclePosition]]}
+        currentCyclePosition: initCyclePosition,
+        appliedStyle: {...cycleMap[initCyclePosition]}
     });
     const handleItemClick = () => {
         let updatedCyclePosition = cycleStates.indexOf(Cycle.currentCyclePosition) + 1;

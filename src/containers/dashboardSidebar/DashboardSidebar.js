@@ -11,44 +11,11 @@ import sidebarSaved from '../../images/sidebarSaved.svg';
 import sidebarContact from '../../images/sidebarContact.svg';
 
 // Components
-import FilterItem from '../../components/filterItem/FilterItem';
+import DiscoverSpread from '../../components/discoverSpread/DiscoverSpread';
 
 const DashboardSidebar = () => {
+
     const path = useLocation().pathname;
-    const discoverSpread = (
-        <div className={sidebarStyle.spreadContainer}>
-            <div className={sidebarStyle.spreadSearch}>
-                <label className={sidebarStyle.spreadLabel}>Ingredients:</label>
-                <div className={sidebarStyle.spreadInputContainer}>
-                    <input type="text" className={sidebarStyle.spreadInput} name="ingredients" id="ingredients"/>
-                    <div className={sidebarStyle.spreadDecoration}></div>
-                </div>
-            </div>
-            <div className={sidebarStyle.spreadList}>
-                <FilterItem
-                    title="Meat"
-                    initCyclePosition={1}
-                />
-                <FilterItem
-                    title="Dirt"
-                    initCyclePosition={2}
-                />
-                <FilterItem
-                    title="Chicken"
-                    initCyclePosition={0}
-                />
-                <FilterItem
-                    title="Dirt"
-                    initCyclePosition={1}
-                />
-                <FilterItem
-                    title="Gravel"
-                    initCyclePosition={2}
-                />
-                
-            </div>
-        </div>
-    );
     return (
         <div className={sidebarStyle.sidebarContainer}>
             <div className={sidebarStyle.head}>
@@ -66,7 +33,7 @@ const DashboardSidebar = () => {
                         <span className={sidebarStyle.linkText}>Discover New Recipes</span>
                     </Link>
                     {
-                        path === '/discover'? discoverSpread : null
+                        path === '/discover'? <DiscoverSpread /> : null
                     }
                 </li>
                 <li>
