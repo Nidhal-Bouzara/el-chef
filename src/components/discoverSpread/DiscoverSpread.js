@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import Axios from 'axios';
 import debounce from 'lodash/debounce';
 
@@ -7,11 +7,15 @@ import spreadStyle from './DiscoverSpread.module.scss';
 
 // Components
 import FilterItem from '../filterItem/FilterItem';
+import { useDispatch, useSelector } from 'react-redux';
+import { setFilterList } from '../../redux/app/recipeSearch';
 
 const DiscoverSpread = () => {
     const [IngredientsValue, setIngredientsValue] = useState('');
     const [IngredientsItems, setIngredientsItems] = useState([]);
     const [Suggestions, setSuggestions] = useState([]);
+    const filterList = useSelector(state => state.recipeSearch.filterList);
+    const dispatch = useDispatch();
 
     // When the user submits an ingredients search query this sends a req to the api
     // and makes the first item in the returned array a filter item
@@ -26,11 +30,13 @@ const DiscoverSpread = () => {
             }
         })
         let Item = response.data.results[0]
-        setIngredientsItems([{
-            id: Item.id,
-            name: Item.name,
-            initCyclePosition: 'selected'
-        }].concat(IngredientsItems));
+        dispatch(
+            setFilterList([{
+                id: Item.id,
+                name: Item.name,
+                initCyclePosition: 'selected'
+            }].concat(filterList))
+        )
         setSuggestions([]);
         setIngredientsValue('');
     }
@@ -75,7 +81,7 @@ const DiscoverSpread = () => {
         )
         console.log('[Query changed!]: ', Suggestions);
     }
-    const debouncedHandleSearchChanged = debounce(handleSearchChange, 400);
+    const debouncedHandleSearchChanged = useCallback(debounce(handleSearchChange, 400), []);
     function handleInputChanged(e) {
         debouncedHandleSearchChanged(e)
         setIngredientsValue(e.target.value.trim(), debouncedHandleSearchChanged)
