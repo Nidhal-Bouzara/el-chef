@@ -1,18 +1,17 @@
 import React, { useState, useCallback } from 'react';
 import Axios from 'axios';
 import debounce from 'lodash/debounce';
+import { useDispatch, useSelector } from 'react-redux';
+import { setFilterList } from '../../redux/app/recipeSearch';
 
 // Styles
 import spreadStyle from './DiscoverSpread.module.scss';
 
 // Components
 import FilterItem from '../filterItem/FilterItem';
-import { useDispatch, useSelector } from 'react-redux';
-import { setFilterList } from '../../redux/app/recipeSearch';
 
 const DiscoverSpread = () => {
     const [IngredientsValue, setIngredientsValue] = useState('');
-    const [IngredientsItems, setIngredientsItems] = useState([]);
     const [Suggestions, setSuggestions] = useState([]);
     const filterList = useSelector(state => state.recipeSearch.filterList);
     const dispatch = useDispatch();
@@ -31,11 +30,11 @@ const DiscoverSpread = () => {
         })
         let Item = response.data.results[0]
         dispatch(
-            setFilterList([{
+            setFilterList({
                 id: Item.id,
                 name: Item.name,
-                initCyclePosition: 'selected'
-            }].concat(filterList))
+                cyclePosition: 'selected'
+            })
         )
         setSuggestions([]);
         setIngredientsValue('');
@@ -43,23 +42,23 @@ const DiscoverSpread = () => {
     
     // Responsible for transforming a suggestion drop-down item click into a filter item
     const handleSuggestionClick = (e) => {
-        setIngredientsItems([{
-            id: e.target.key,
-            name: e.target.dataset.name,
-            initCyclePosition: 'selected'
-        }].concat(IngredientsItems))
+        dispatch(
+            setFilterList({
+                id: e.target.dataset.id,
+                name: e.target.dataset.name,
+                cyclePosition: 'selected'
+            })
+        )
         setSuggestions([]);
         setIngredientsValue('');
     }
 
     // Responsible for sending Axios req on search query change and making the data into suggestion items
     const handleSearchChange = async (e) => {
-        console.log('chengeddd', e.target.value);
         if (e.target.value.trim() === '') {
             setSuggestions([]);
             return;
         }
-        console.log('moved forward in function');
         const response = await Axios.get('https://api.spoonacular.com/food/ingredients/search', {
             params: {
                 query: e.target.value,
@@ -71,6 +70,7 @@ const DiscoverSpread = () => {
                 return(
                     <li 
                         key={item.id}
+                        data-id={item.id}
                         data-name={item.name}
                         onClick={handleSuggestionClick}    
                     >
@@ -79,7 +79,6 @@ const DiscoverSpread = () => {
                 )
             })
         )
-        console.log('[Query changed!]: ', Suggestions);
     }
     const debouncedHandleSearchChanged = useCallback(debounce(handleSearchChange, 400), []);
     function handleInputChanged(e) {
@@ -120,13 +119,14 @@ const DiscoverSpread = () => {
                 </div>
             </div>
             <div className={spreadStyle.spreadList}>
-                {   IngredientsItems.length > 0 ?
-                    IngredientsItems.map((item) => {
+                {   filterList.length > 0 ?
+                    filterList.map((item) => {
                         return (
                             <FilterItem
-                                key={item.key}
+                                key={item.id}
+                                id={item.id}
                                 title={item.name}
-                                initCyclePosition={item.initCyclePosition}
+                                cyclePosition={item.cyclePosition}
                             />
                         )
                     }) : (<div style={{fontFamily: 'Work Sans'}}>^^^ Add Ingredients by searching above (If it doesn't it means the El-Chef API key has exceeded the daily quota)</div>)

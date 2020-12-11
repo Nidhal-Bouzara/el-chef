@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateCyclePosition } from '../../redux/app/recipeSearch';
 
 // Styling
 import itemStyle from './FilterItem.module.scss';
 
-const FilterItem = ({title, initCyclePosition}) => {
+const FilterItem = ({id, title, cyclePosition}) => {
+
+    const dispatch = useDispatch();
+    const filterList = useSelector(state => state.recipeSearch.filterList);
     const cycleMap = {
         neutral: {
             button: itemStyle.spreadButton + ' ' + itemStyle.spreadNeutral,
@@ -20,16 +25,25 @@ const FilterItem = ({title, initCyclePosition}) => {
     }
     const cycleStates = ['neutral', 'selected', 'removed'];
     const [Cycle, setCycle] = useState({
-        currentCyclePosition: initCyclePosition,
-        appliedStyle: {...cycleMap[initCyclePosition]}
+        appliedStyle: {...cycleMap[cyclePosition]}
     });
-    const handleItemClick = () => {
-        let updatedCyclePosition = cycleStates.indexOf(Cycle.currentCyclePosition) + 1;
+    const handleItemClick = (e) => {
+        
+        console.log(filterList);
+        let itemIndex = filterList.findIndex(item => parseInt(item.id) === parseInt(e.currentTarget.dataset.id));
+        console.log(itemIndex, filterList, filterList[itemIndex]);        
+        let updatedCyclePosition = cycleStates.indexOf(filterList[itemIndex].cyclePosition) + 1;
         if (updatedCyclePosition > cycleStates.length - 1) {
             updatedCyclePosition = 0;
         }
+        // console.log(e.currentTarget, '&&', e.currentTarget.dataset, '&&', parseInt(e.currentTarget.dataset.id), '&&', e.currentTarget.dataset.id);
+        dispatch(
+            updateCyclePosition({
+                    itemIndex: itemIndex,
+                    newCycle: cycleStates[updatedCyclePosition]
+            })
+        )
         setCycle({
-            currentCyclePosition: cycleStates[updatedCyclePosition],
             appliedStyle: {...cycleMap[cycleStates[updatedCyclePosition]]}
         });
     }
@@ -37,6 +51,7 @@ const FilterItem = ({title, initCyclePosition}) => {
         <button
             className={Cycle.appliedStyle.button}
             onClick={handleItemClick}
+            data-id={id}
         >
             <div
                 className={Cycle.appliedStyle.symbol}
