@@ -9,6 +9,7 @@
     & > img {
         height: 100%;
         width: auto;
+        object-fit: cover;
     }
 }
 
@@ -48,13 +49,12 @@
     font-family: 'Work Sans';
     color: #6B6B6B;
     margin: 0;
-    overflow: hidden;
+    overflow-y: scroll;
+    height: 150px;
 }
 
 .buttons {
     display: flex;
-    // width: 52%;
-    // max-width: 400px;
     position: absolute;
     bottom: 1.5vw;
 }
@@ -111,7 +111,16 @@
     transition: all .4s ease;
 }
 
-.widgetContainer {
+.widgetContainerInfo {
+    margin: 1.4vw 1.5vw 0;
+    height: 37%;
+    overflow-y: scroll;
+}
+
+.widgetContainerIngredients {
+    position: relative;
+    height: 44%;
+    overflow-y: scroll;
     margin: 1.4vw 1.5vw 0;
 }
 
@@ -126,6 +135,7 @@
 .widgetItems {
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .widgetItem {
@@ -140,8 +150,6 @@
 }
 
 .widgetItemValue {
-    position: absolute;
-    left: 7vw;
     font-family: 'Work Sans';
     font-size: .8vw;
 }

@@ -131,3 +131,11 @@ code {
       left: 105%;   
   }
 }
+
+.subTitle {
+  font-family: 'Caveat';
+  color: #D4D8FF;
+  font-size: 2vw;
+  font-weight: 400;
+
+}

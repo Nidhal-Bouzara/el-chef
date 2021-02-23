@@ -1,12 +1,11 @@
 import React from 'react';
-import { Route, Switch, useLocation } from 'react-router';
+import { Route, Switch } from 'react-router';
 
 // Containers
 import DashboardDisplay from '../../containers/dashboardDisplay/DashboardDisplay';
 import DashboardSidebar from '../../containers/dashboardSidebar/DashboardSidebar';
 
 const DesktopDashboard = () => {
-    const {pathname} = useLocation()
     return (
         <div
             style={{

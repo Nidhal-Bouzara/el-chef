@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import Axios from 'axios';
 import debounce from 'lodash/debounce';
 import { useDispatch, useSelector } from 'react-redux';
-import { setFilterList } from '../../redux/app/recipeSearch';
+import { setFilterList, setRecipeList, setRecipeInfo } from '../../redux/app/recipeSearch';
 
 // Styles
 import spreadStyle from './DiscoverSpread.module.scss';
@@ -14,8 +14,10 @@ const DiscoverSpread = () => {
     const [IngredientsValue, setIngredientsValue] = useState('');
     const [Suggestions, setSuggestions] = useState([]);
     const filterList = useSelector(state => state.recipeSearch.filterList);
+    const recipeList = useSelector(state => state.recipeSearch.recipeList);
     const dispatch = useDispatch();
-
+    
+    /* API SEARCH */
     // When the user submits an ingredients search query this sends a req to the api
     // and makes the first item in the returned array a filter item
     const handleIngredientsSearch = async () => {
@@ -28,16 +30,20 @@ const DiscoverSpread = () => {
                 apiKey: '6ff4debfae3c409a891e3d5605d8d9dc'
             }
         })
-        let Item = response.data.results[0]
-        dispatch(
-            setFilterList({
-                id: Item.id,
-                name: Item.name,
-                cyclePosition: 'selected'
-            })
-        )
-        setSuggestions([]);
-        setIngredientsValue('');
+        if(response.status === 200) {
+            let Item = response.data.results[0]
+            dispatch(
+                setFilterList({
+                    id: Item.id,
+                    name: Item.name,
+                    cyclePosition: 'selected'
+                })
+                )
+            setSuggestions([]);
+            setIngredientsValue('');
+        } else {
+            return;
+        }
     }
     
     // Responsible for transforming a suggestion drop-down item click into a filter item
@@ -74,7 +80,7 @@ const DiscoverSpread = () => {
                         data-name={item.name}
                         onClick={handleSuggestionClick}    
                     >
-                            {item.name}
+                        {item.name}
                     </li>
                 )
             })
@@ -84,6 +90,67 @@ const DiscoverSpread = () => {
     function handleInputChanged(e) {
         debouncedHandleSearchChanged(e)
         setIngredientsValue(e.target.value.trim(), debouncedHandleSearchChanged)
+    }
+
+    /* RECIPES LIST API */
+    const handleFilterButtonClick = async () => {
+        let tempList = [];
+        filterList.forEach(item => {
+            tempList.push(item.name);
+        });
+        console.log(tempList);
+        // console.log('this is templist:', tempList);
+        const response = await Axios.get('https://api.spoonacular.com/recipes/complexSearch', {
+            params: {
+                includeIngredients: tempList.join(),
+                apiKey: '6ff4debfae3c409a891e3d5605d8d9dc'
+            }
+        })
+        if( response.status === 200 ) {
+            let newState = response.data.results.map(item => {
+                return {
+                    id: item.id,
+                    title: item.title,
+                    imageUrl: item.image
+                }
+            })
+            console.log('in Comp: ', newState);
+            dispatch(setRecipeList(newState));
+            getRecipeDetailsBulk(newState);
+        }
+    }
+
+    /* RECIPE DETAILS API */
+    const getRecipeDetailsBulk = async (recipeListe) => {
+        // Getting the list of the IDs to fetch details for
+        let idList = recipeListe.map(recipe => {
+            return recipe.id;
+        })
+        console.log('IDS: ', idList);
+        // The Api request
+        const response = await Axios.get('https://api.spoonacular.com/recipes/informationBulk', {
+            params: {
+                ids: idList.join(),
+                apiKey: '6ff4debfae3c409a891e3d5605d8d9dc'
+            }
+        });
+        if ( response.status === 200 ) {
+            let recipeInfo = response.data.map(recipe => {
+                return {
+                    id: recipe.id,
+                    title: recipe.title,
+                    imageUrl: recipe.image,
+                    readyInMinutes: recipe.readyInMinutes,
+                    rating: (recipe.spoonacularScore - (recipe.spoonacularScore)%10)/20,
+                    vegetarian: recipe.vegetarian,
+                    dishTypes: recipe.dishTypes,
+                    extendedIngredients: recipe.extendedIngredients,
+                    summary: recipe.summary,
+
+                }
+            })
+            dispatch(setRecipeInfo(recipeInfo));
+        }
     }
     return (
         <div className={spreadStyle.spreadContainer}>
@@ -129,8 +196,13 @@ const DiscoverSpread = () => {
                                 cyclePosition={item.cyclePosition}
                             />
                         )
-                    }) : (<div style={{fontFamily: 'Work Sans'}}>^^^ Add Ingredients by searching above (If it doesn't it means the El-Chef API key has exceeded the daily quota)</div>)
+                    }) : (<div style={{fontFamily: 'Work Sans'}}>^^^ Add Ingredients by searching above (If it doesn't work that means the El-Chef API key has exceeded the daily quota)</div>)
                 }
+            </div>
+            <div className={spreadStyle.filterButton}>
+                <button
+                    onClick={handleFilterButtonClick}
+                >Filter</button>
             </div>
         </div>
     );

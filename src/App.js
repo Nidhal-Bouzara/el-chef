@@ -32,11 +32,11 @@ const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" component={DesktopDashboard} />
         {
           screenIsMobile ?
-          <Route path="/" exact component={MobileLandingPage} /> : <Route path="/" component={DesktopLandingPage} />
+          <Route path="/landing" exact component={MobileLandingPage} /> : <Route path="/landing" exact component={DesktopLandingPage} />
         }
+        <Route path="/" component={DesktopDashboard} />
       </Switch>
     </BrowserRouter>
   )

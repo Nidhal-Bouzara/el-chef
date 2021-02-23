@@ -1,16 +1,17 @@
 import React from 'react';
 import ReactStars from 'react-rating-stars-component';
+import parse from 'html-react-parser';
 
 // Styling
 import rdStyle from './RecipeDisplay.module.scss';
 
 // Images
-import dish from '../../../images/dish.png';
 import add from '../../../images/add.svg';
 import { useSelector } from 'react-redux';
 
-const RecipeDisplay = () => {
+const RecipeDisplay = ({title, imageUrl, rating, summary, extendedIngredients, vegetarian, readyInMinutes, dishTypes}) => {
     let screenHasEnoughWidth = useSelector(state => state.responsive.hasEnoughWidth);
+    console.log(rating);
     return (
             <div
                 className={rdStyle.item}
@@ -18,14 +19,14 @@ const RecipeDisplay = () => {
                     screenHasEnoughWidth? null : {width: '54vw'}
                 }    
             >
-                <img src={dish} alt="dish" />
+                <img src={imageUrl} alt="dish" />
                 <div className={rdStyle.content}>
-                    <h1 className={rdStyle.title}>PROTEIN MEAT MEAL</h1>
+                    <h1 className={rdStyle.title}>{title}</h1>
                     <div className={rdStyle.ratingContainer}>
-                        <span className={rdStyle.ratingTitle}>Rating:&emsp;</span>
-                        <ReactStars
+{                        <span className={rdStyle.ratingTitle}>Rating:&emsp;</span>
+}                        <ReactStars
                             count={5}
-                            value={3.5}
+                            value={rating}
                             isHalf={true}
                             activeColor={"#FFF700"}
                             classNames={rdStyle.stars}
@@ -33,7 +34,7 @@ const RecipeDisplay = () => {
                     </div>
                     <div className={rdStyle.descriptionContainer}>
                         <p className={rdStyle.description}>
-                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam…
+                            {parse(summary)}
                         </p>
                     </div>
                     <div className={rdStyle.buttons}>
@@ -47,33 +48,39 @@ const RecipeDisplay = () => {
                 {
                     screenHasEnoughWidth? (
                         <div className={rdStyle.widget}>
-                            <div className={rdStyle.widgetContainer}>
+                            <div className={rdStyle.widgetContainerInfo}>
                                 <h2 className={rdStyle.widgetTitle}>Nutritional Value</h2>
                                 <div className={rdStyle.widgetItems}>
                                     <div className={rdStyle.widgetItem}>
-                                        <span className={rdStyle.widgetItemName}>Calories:</span>
-                                        <span className={rdStyle.widgetItemValue}>584</span>
+                                        <span className={rdStyle.widgetItemName}>Vegetarian dish:</span>&nbsp;
+                                        <span className={rdStyle.widgetItemValue}>{vegetarian? 'Yes' : 'No'}</span>
                                     </div>
                                     <div className={rdStyle.widgetItem}>
-                                        <span className={rdStyle.widgetItemName}>Carbs:</span>
-                                        <span className={rdStyle.widgetItemValue}>84g</span>
+                                        <span className={rdStyle.widgetItemName}>How many minutes to prepare:</span>&nbsp;
+                                        <span className={rdStyle.widgetItemValue}>{readyInMinutes}</span>
                                     </div>
                                     <div className={rdStyle.widgetItem}>
-                                        <span className={rdStyle.widgetItemName}>Fat:</span>
-                                        <span className={rdStyle.widgetItemValue}>20g</span>
-                                    </div>
-                                    <div className={rdStyle.widgetItem}>
-                                        <span className={rdStyle.widgetItemName}>Protein:</span>
-                                        <span className={rdStyle.widgetItemValue}>19g</span>
+                                        <span className={rdStyle.widgetItemName}>What is this dish:</span>&nbsp;
+                                        <span className={rdStyle.widgetItemValue}>{
+                                            dishTypes.join(', ')
+                                        }</span>
                                     </div>
                                 </div>
                             </div>
-                            <div className={rdStyle.widgetContainer}>
+                            <div className={rdStyle.widgetContainerIngredients}>
                                 <h2 className={rdStyle.widgetTitle}>Ingredients</h2>
                                 <div className={rdStyle.widgetItems}>
-                                    <div className={rdStyle.widgetItem}>
-                                        <span className={rdStyle.widgetItemName}>Meat, Potatoes, Sauce, Peas, Dirt, Gravel, Oil, Olives.</span>
-                                    </div>
+                                    {
+                                        extendedIngredients.map(item => {
+                                            return (
+                                                <div className={rdStyle.widgetItem}>
+                                                    <span className={rdStyle.widgetItemName}>
+                                                        {item.name}
+                                                    </span>
+                                                </div>
+                                            );
+                                        })
+                                    }
                                 </div>
                             </div>
                         </div>
